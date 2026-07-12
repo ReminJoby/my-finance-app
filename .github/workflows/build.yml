@@ -6,17 +6,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11' # Use 3.11 for maximum stability
+
       - name: Install Flet and Build Tools
         run: |
           pip install flet
           sudo apt-get update
           sudo apt-get install -y openjdk-17-jdk
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.7' # Installs the exact version Flet needs
+          channel: 'stable'
+
       - name: Build APK
-        run: flet build apk --no-interactive --android-permissions android.permission.INTERNET=True android.permission.USE_BIOMETRIC=True
+        run: flet build apk --android-permissions android.permission.INTERNET=True android.permission.USE_BIOMETRIC=True
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
