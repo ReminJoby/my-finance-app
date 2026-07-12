@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Python
         uses: actions/setup-python@v4
         with:
@@ -19,7 +19,7 @@ jobs:
         run: |
           flet build apk --android-permissions android.permission.INTERNET=True android.permission.USE_BIOMETRIC=True
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: finance-app-apk
           path: build/apk/*.apk
