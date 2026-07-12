@@ -1,0 +1,4 @@
+flet
+google-genai
+requests
+beautifulsoup4
