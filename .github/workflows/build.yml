@@ -16,8 +16,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openjdk-17-jdk
       - name: Build APK
-        run: |
-          flet build apk --android-permissions android.permission.INTERNET=True android.permission.USE_BIOMETRIC=True
+        run: flet build apk --no-interactive --android-permissions android.permission.INTERNET=True android.permission.USE_BIOMETRIC=True
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
